@@ -4,7 +4,7 @@ export default function concat ( bundle, options ) {
 	var body, intro, outro, indent;
 
 	// This bundle must be self-contained - no imports or exports
-	if ( bundle.externalModules.length || bundle.entryModule.exports.length ) {
+	if ( !options.ignoreExternal && (bundle.externalModules.length || bundle.entryModule.exports.length) ) {
 		throw new Error( 'bundle.concat() can only be used with bundles that have no imports/exports' );
 	}
 
